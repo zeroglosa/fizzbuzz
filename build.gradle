@@ -1,0 +1,23 @@
+
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+configurations.all {
+	resolutionStrategy.cacheDynamicVersionsFor 5, 'minutes'
+}
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+	maven {
+		url "http://snapshots.repository.codehaus.org/"
+	}
+
+}
+
+dependencies {
+	groovy group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.0.7'
+
+	testCompile group: 'org.gmock', name: 'gmock', version: '0.8.2'
+	testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+}
